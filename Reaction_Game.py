@@ -1,18 +1,26 @@
 import pygame, time, random
+# import required modules
 
 pygame.init()
+#initalise pygame
 
 screen = pygame.display.set_mode([500, 500])
 pygame.display.set_caption("Reaction Game")
+
+# initalise the screen 
 
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
-Tsoon = False
 
+# assing colour values
+
+Tsoon = False
 run = False
+
+# assing bools for checking if the game is over and "won"
 
 
 def Win():
@@ -22,12 +30,14 @@ def Win():
         win = False
 
     return win
+# function to determine if the square will turn green
+
+startTime = 0
+font = pygame.font.Font(None, 34)
 
 clock = pygame.time.Clock()
 screen.fill(black)
-font = pygame.font.Font(None, 34)
 pygame.draw.rect(screen, red, (150, 150, 200, 200))
-startTime = 0
 
 while not run:
     win = Win()
@@ -40,6 +50,7 @@ while not run:
             run = True
             endTime = int(round(time.time() * 1000))
             finishTime = (endTime - startTime)
+            
             if not Tsoon:
                 soon = font.render("Too soon", 1, white)
                 screen.blit(soon, (200, 375))
