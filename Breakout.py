@@ -13,7 +13,7 @@ green = (0, 255, 0)
 yellow = (255, 255, 0)
 orange = (255, 69, 0)
 
-# initialises varibles
+# initialises variables
 score = 0
 chance = 0
 lives = 3
@@ -135,7 +135,7 @@ for i in range(7):
 	# adds the brick to the all brick sprite list
 	allBricks.add(brick)
 
-# creates the second layer of orange bbicks
+# creates the second layer of orange bricks
 for i in range(7):
 	brick = Brick(orange, 80, 30)
 	brick.rect.x = 60 + i * 100
@@ -172,11 +172,15 @@ while not Quit:
 			if event.key == pygame.K_ESCAPE:
 				Quit = True
 
-	# gwts key input fomr keyboard and move the paddle accordingly
+	# gets key input form keyboard and move the paddle accordingly
 	keys = pygame.key.get_pressed()
 	if keys[pygame.K_a]:
 		paddle.moveLeft(8)
 	if keys[pygame.K_d]:
+		paddle.moveRight(8)
+	if keys[pygame.K_LEFT]:
+		paddle.moveLeft(8)
+	if keys[pygame.K_RIGHT]:
 		paddle.moveRight(8)
 
 	allSpritesList.update()
@@ -219,7 +223,7 @@ while not Quit:
 			pygame.time.wait(3000)
 			Quit = True
 
-	# colllision detection for the ball and paddle
+	# collision detection for the ball and paddle
 	if pygame.sprite.collide_mask(ball, paddle):
 		ball.rect.x -= ball.speed[0]
 		ball.rect.y -= ball.speed[1]
